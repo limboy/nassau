@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class SettingViewController: NSViewController, NSTextFieldDelegate {
-
+// MARK: Properties
+class SettingViewController: NSViewController {
     lazy var adbTitleTextField:NSTextField = {
         var v = NSTextField()
         v.isBordered = false
@@ -60,16 +60,16 @@ class SettingViewController: NSViewController, NSTextFieldDelegate {
         v.alignment = .right
         return v
     }()
+}
 
+// MARK: Life Cycle
+extension SettingViewController {
     override func loadView() {
         let width = SettingWindowController.defaultRect.size.width
         let height = SettingWindowController.defaultRect.size.height
         let x = (NSScreen.main?.frame.size.width)! / 2 - width / 2
         let y = (NSScreen.main?.frame.size.height)! / 2 - height / 2
-        self.view = NSView(frame: NSMakeRect(x,
-                                             y,
-                                             width,
-                                             height))
+        self.view = NSView(frame: NSMakeRect(x, y, width, height))
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.white.cgColor
     }
@@ -85,7 +85,9 @@ class SettingViewController: NSViewController, NSTextFieldDelegate {
         adbTextField.delegate = self
         keywordTextField.delegate = self
     }
-    
+}
+
+extension SettingViewController: NSTextFieldDelegate {
     func control(_ control: NSControl, textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
         if (commandSelector == #selector(insertNewline(_:))) {
             if control == adbTextField {
