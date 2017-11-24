@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A006AB71FB4310F003033CD /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A006AB61FB4310F003033CD /* TagTableViewCell.swift */; };
+		6A03C6841FB55C6800D1D7DC /* FilterLogLevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */; };
+		6A03C6861FB58DE500D1D7DC /* DetailTableViewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */; };
+		6A03C68A1FB70AE400D1D7DC /* WaitingForADBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */; };
+		6A03C69C1FB97EE600D1D7DC /* BlackSails.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 6A03C69B1FB97EE600D1D7DC /* BlackSails.iconset */; };
+		6A4491E41FB32D2F006E6BD2 /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4491E31FB32D2F006E6BD2 /* LoggerViewController.swift */; };
+		6A4491E61FB32D46006E6BD2 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4491E51FB32D46006E6BD2 /* TagViewController.swift */; };
+		6A4491E81FB32D54006E6BD2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4491E71FB32D54006E6BD2 /* DetailViewController.swift */; };
+		6A73D8941FC12862007D0ED2 /* USBWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73D8931FC12862007D0ED2 /* USBWatcher.swift */; };
+		6A73D8961FC3DE67007D0ED2 /* LogLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73D8951FC3DE67007D0ED2 /* LogLevelView.swift */; };
+		6A8752861FBADB3F0011D056 /* SettingWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8752841FBADB3F0011D056 /* SettingWindowController.swift */; };
+		6A8752891FBAEC960011D056 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8752881FBAEC960011D056 /* SettingViewController.swift */; };
+		6AA399751FB3E19A00CBC6C0 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA399731FB3E19A00CBC6C0 /* MainWindowController.swift */; };
+		6AD743941FB16B1D00DE56C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD743931FB16B1D00DE56C6 /* AppDelegate.swift */; };
+		6AD743961FB16B1D00DE56C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AD743951FB16B1D00DE56C6 /* Assets.xcassets */; };
+		6AD743991FB16B1D00DE56C6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AD743971FB16B1D00DE56C6 /* MainMenu.xib */; };
+		BE4611C19010B2D0200BB9F3 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE46132A555FE32823B85F56 /* Shell.swift */; };
+		BE46186198089119B013A293 /* LogDataObserverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6AD743A41FB16D0000DE56C6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6A006AB61FB4310F003033CD /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
+		6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLogLevelButton.swift; sourceTree = "<group>"; };
+		6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewColumnCell.swift; sourceTree = "<group>"; };
+		6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForADBViewController.swift; sourceTree = "<group>"; };
+		6A03C69B1FB97EE600D1D7DC /* BlackSails.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = BlackSails.iconset; sourceTree = "<group>"; };
+		6A4491E31FB32D2F006E6BD2 /* LoggerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
+		6A4491E51FB32D46006E6BD2 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		6A4491E71FB32D54006E6BD2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6A73D88F1FC127E7007D0ED2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		6A73D8901FC12811007D0ED2 /* Nassau-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nassau-Bridging-Header.h"; sourceTree = "<group>"; };
+		6A73D8931FC12862007D0ED2 /* USBWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USBWatcher.swift; sourceTree = "<group>"; };
+		6A73D8951FC3DE67007D0ED2 /* LogLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelView.swift; sourceTree = "<group>"; };
+		6A8752841FBADB3F0011D056 /* SettingWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWindowController.swift; sourceTree = "<group>"; };
+		6A8752881FBAEC960011D056 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		6AA399731FB3E19A00CBC6C0 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		6AD743901FB16B1D00DE56C6 /* Nassau.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nassau.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AD743931FB16B1D00DE56C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6AD743951FB16B1D00DE56C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AD743981FB16B1D00DE56C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6AD7439A1FB16B1D00DE56C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AD7439B1FB16B1D00DE56C6 /* Nassau.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nassau.entitlements; sourceTree = "<group>"; };
+		BE46132A555FE32823B85F56 /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDataObserverProtocol.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6AD7438D1FB16B1D00DE56C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6A87528A1FBB16630011D056 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A73D88F1FC127E7007D0ED2 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6AD743871FB16B1D00DE56C6 = {
+			isa = PBXGroup;
+			children = (
+				6AD743921FB16B1D00DE56C6 /* Nassau */,
+				6AD743911FB16B1D00DE56C6 /* Products */,
+				6A87528A1FBB16630011D056 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6AD743911FB16B1D00DE56C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6AD743901FB16B1D00DE56C6 /* Nassau.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AD743921FB16B1D00DE56C6 /* Nassau */ = {
+			isa = PBXGroup;
+			children = (
+				6A8752841FBADB3F0011D056 /* SettingWindowController.swift */,
+				6A8752881FBAEC960011D056 /* SettingViewController.swift */,
+				6AD743931FB16B1D00DE56C6 /* AppDelegate.swift */,
+				6AA399731FB3E19A00CBC6C0 /* MainWindowController.swift */,
+				6A4491E31FB32D2F006E6BD2 /* LoggerViewController.swift */,
+				6A4491E51FB32D46006E6BD2 /* TagViewController.swift */,
+				6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */,
+				6A006AB61FB4310F003033CD /* TagTableViewCell.swift */,
+				6A4491E71FB32D54006E6BD2 /* DetailViewController.swift */,
+				6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */,
+				6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */,
+				6A73D8951FC3DE67007D0ED2 /* LogLevelView.swift */,
+				6A03C69B1FB97EE600D1D7DC /* BlackSails.iconset */,
+				6AD743951FB16B1D00DE56C6 /* Assets.xcassets */,
+				6AD743971FB16B1D00DE56C6 /* MainMenu.xib */,
+				6AD7439A1FB16B1D00DE56C6 /* Info.plist */,
+				6AD7439B1FB16B1D00DE56C6 /* Nassau.entitlements */,
+				BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */,
+				BE46132A555FE32823B85F56 /* Shell.swift */,
+				6A73D8901FC12811007D0ED2 /* Nassau-Bridging-Header.h */,
+				6A73D8931FC12862007D0ED2 /* USBWatcher.swift */,
+			);
+			path = Nassau;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6AD7438F1FB16B1D00DE56C6 /* Nassau */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AD7439E1FB16B1D00DE56C6 /* Build configuration list for PBXNativeTarget "Nassau" */;
+			buildPhases = (
+				6AD7438C1FB16B1D00DE56C6 /* Sources */,
+				6AD7438D1FB16B1D00DE56C6 /* Frameworks */,
+				6AD7438E1FB16B1D00DE56C6 /* Resources */,
+				6AD743A41FB16D0000DE56C6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nassau;
+			productName = Nassau;
+			productReference = 6AD743901FB16B1D00DE56C6 /* Nassau.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6AD743881FB16B1D00DE56C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = limboy;
+				TargetAttributes = {
+					6AD7438F1FB16B1D00DE56C6 = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 6AD7438B1FB16B1D00DE56C6 /* Build configuration list for PBXProject "Nassau" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6AD743871FB16B1D00DE56C6;
+			productRefGroup = 6AD743911FB16B1D00DE56C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6AD7438F1FB16B1D00DE56C6 /* Nassau */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6AD7438E1FB16B1D00DE56C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AD743961FB16B1D00DE56C6 /* Assets.xcassets in Resources */,
+				6A03C69C1FB97EE600D1D7DC /* BlackSails.iconset in Resources */,
+				6AD743991FB16B1D00DE56C6 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6AD7438C1FB16B1D00DE56C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A4491E61FB32D46006E6BD2 /* TagViewController.swift in Sources */,
+				6A4491E41FB32D2F006E6BD2 /* LoggerViewController.swift in Sources */,
+				6AD743941FB16B1D00DE56C6 /* AppDelegate.swift in Sources */,
+				6A03C6841FB55C6800D1D7DC /* FilterLogLevelButton.swift in Sources */,
+				6A006AB71FB4310F003033CD /* TagTableViewCell.swift in Sources */,
+				6A8752891FBAEC960011D056 /* SettingViewController.swift in Sources */,
+				6A03C6861FB58DE500D1D7DC /* DetailTableViewColumnCell.swift in Sources */,
+				6A4491E81FB32D54006E6BD2 /* DetailViewController.swift in Sources */,
+				6A03C68A1FB70AE400D1D7DC /* WaitingForADBViewController.swift in Sources */,
+				6A73D8941FC12862007D0ED2 /* USBWatcher.swift in Sources */,
+				6AA399751FB3E19A00CBC6C0 /* MainWindowController.swift in Sources */,
+				BE46186198089119B013A293 /* LogDataObserverProtocol.swift in Sources */,
+				6A8752861FBADB3F0011D056 /* SettingWindowController.swift in Sources */,
+				6A73D8961FC3DE67007D0ED2 /* LogLevelView.swift in Sources */,
+				BE4611C19010B2D0200BB9F3 /* Shell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6AD743971FB16B1D00DE56C6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AD743981FB16B1D00DE56C6 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6AD7439C1FB16B1D00DE56C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6AD7439D1FB16B1D00DE56C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		6AD7439F1FB16B1D00DE56C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5P9ZHW7578;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Nassau/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = me.limboy.Nassau;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nassau/Nassau-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		6AD743A01FB16B1D00DE56C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5P9ZHW7578;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = Nassau/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = me.limboy.Nassau;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Nassau/Nassau-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6AD7438B1FB16B1D00DE56C6 /* Build configuration list for PBXProject "Nassau" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AD7439C1FB16B1D00DE56C6 /* Debug */,
+				6AD7439D1FB16B1D00DE56C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AD7439E1FB16B1D00DE56C6 /* Build configuration list for PBXNativeTarget "Nassau" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6AD7439F1FB16B1D00DE56C6 /* Debug */,
+				6AD743A01FB16B1D00DE56C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6AD743881FB16B1D00DE56C6 /* Project object */;
+}
