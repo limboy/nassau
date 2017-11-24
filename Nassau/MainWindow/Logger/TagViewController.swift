@@ -12,9 +12,8 @@ protocol TagViewControllerDelegate {
     func didSelect(tags: [String])
 }
 
+// MARK: Properties
 class TagViewController: NSViewController {
-
-    // MARK: Private Variables
     private struct Metrics {
         static let rowHeight:CGFloat = 32
     }
@@ -99,62 +98,8 @@ class TagViewController: NSViewController {
         return v
     }()
     
-    private func processAddedTags() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            self.processAddedTags()
-        }
-        
-        if (tobeProcessedTags.count <= 0) {
-            return
-        }
-        
-        tobeProcessedTags.forEach { (tag) in
-            // 如果正在过滤，且没有命中
-            var shouldReload = true
-            if filteringKeyword != "" && tag.lowercased().range(of: filteringKeyword.lowercased()) == nil{
-                shouldReload = false
-            }
-            
-            if !allTags.contains(tag) {
-                allTags.append(tag)
-            }
-            
-            if shouldReload {
-                if !filteredTags.contains(tag) {
-                    self.tableView.beginUpdates()
-                    let addedIndex = IndexSet(integer: filteredTags.count)
-                    self.tableView.insertRows(at: addedIndex, withAnimation: .slideDown)
-                    filteredTags.append(tag)
-                    tableView.reloadData(forRowIndexes: addedIndex, columnIndexes: IndexSet(integersIn: 0..<1))
-                    self.tableView.endUpdates()
-                } else {
-                    let index = filteredTags.index(of: tag)
-                    let reloadIndex = IndexSet(integer: index!)
-                    // 去掉这个应该也 OK
-                    // tableView.moveRow(at: index!, to: index!)
-                    tableView.reloadData(forRowIndexes: reloadIndex, columnIndexes: IndexSet(integersIn:0..<1))
-                }
-            }
-        }
-        
-        tobeProcessedTags.removeAll()
-    }
-    
-    // MARK: Public Variables
     var delegate: TagViewControllerDelegate?
 
-    @objc func onItemClicked() {
-        let selected = tableView.clickedRow
-        if (selected != -1) {
-            var selectedTags = [String]()
-            tableView.selectedRowIndexes.forEach({ (index) in
-                selectedTags.append(self.filteredTags[index])
-            })
-            delegate?.didSelect(tags: selectedTags)
-        }
-    }
-
-    // MARK: Life Cycle
     init(windowController: MainWindowController) {
         self.windowController = windowController
         super.init(nibName: nil, bundle: nil)
@@ -163,12 +108,15 @@ class TagViewController: NSViewController {
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+}
+
+// MARK: Life Cycle
+extension TagViewController {
     override func loadView() {
         view = NSView(frame: NSRect(x: 0,
                                     y: 0,
-                                width: 200,
-                                height: MainWindowController.defaultRect.height))
+                                    width: 200,
+                                    height: MainWindowController.defaultRect.height))
         view.widthAnchor.constraint(lessThanOrEqualToConstant: 400).isActive = true
         
         scrollView.frame = view.bounds
@@ -192,7 +140,7 @@ class TagViewController: NSViewController {
         textField.widthAnchor.constraint(equalTo: filterSection.widthAnchor, constant: -16).isActive = true
         textField.heightAnchor.constraint(equalTo: filterSection.heightAnchor, constant: -16).isActive = true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -208,7 +156,63 @@ class TagViewController: NSViewController {
     }
 }
 
-// MARK: Public
+// MARK: Private Methods
+extension TagViewController {
+    private func processAddedTags() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            self.processAddedTags()
+        }
+        
+        if (tobeProcessedTags.count <= 0) {
+            return
+        }
+        
+        tobeProcessedTags.forEach { (tag) in
+            var shouldReload = true
+            if filteringKeyword != "" && tag.lowercased().range(of: filteringKeyword.lowercased()) == nil{
+                shouldReload = false
+            }
+            
+            if !allTags.contains(tag) {
+                allTags.append(tag)
+            }
+            
+            if shouldReload {
+                if !filteredTags.contains(tag) {
+                    self.tableView.beginUpdates()
+                    let addedIndex = IndexSet(integer: filteredTags.count)
+                    self.tableView.insertRows(at: addedIndex, withAnimation: .slideDown)
+                    filteredTags.append(tag)
+                    tableView.reloadData(forRowIndexes: addedIndex, columnIndexes: IndexSet(integersIn: 0..<1))
+                    self.tableView.endUpdates()
+                } else {
+                    let index = filteredTags.index(of: tag)
+                    let reloadIndex = IndexSet(integer: index!)
+
+                    tableView.reloadData(forRowIndexes: reloadIndex, columnIndexes: IndexSet(integersIn:0..<1))
+                }
+            }
+        }
+        
+        tobeProcessedTags.removeAll()
+    }
+}
+
+// MARK: Target-Action
+extension TagViewController {
+    @objc func onItemClicked() {
+        let selected = tableView.clickedRow
+        if (selected != -1) {
+            var selectedTags = [String]()
+            tableView.selectedRowIndexes.forEach({ (index) in
+                selectedTags.append(self.filteredTags[index])
+            })
+            delegate?.didSelect(tags: selectedTags)
+        }
+    }
+}
+
+// MARK: Public Methods
 extension TagViewController {
     func append(tag: String) {
         if !tagsCount.keys.contains(tag) {
