@@ -16,14 +16,10 @@ struct LogItem {
     var message: String
 }
 
+// MARK: Private Properties
 class MainWindowController: NSWindowController {
 
-    // MARK: privates
     private var wc:SettingWindowController?
-    
-    static var defaultRect: NSRect {
-        return NSMakeRect(0, 0, 900, 600)
-    }
     
     private var logObserver: LogDataObserverProtocol?
     
@@ -41,28 +37,25 @@ class MainWindowController: NSWindowController {
 
     private var usbDevices = Set<String>()
     
-    lazy var waitingForADBViewController: WaitingForADBViewController = {
+    private lazy var waitingForADBViewController: WaitingForADBViewController = {
         var v = WaitingForADBViewController(windowController: self)
         
         return v
     }()
     
-    lazy var loggerViewController:LoggerViewController = {
+    private lazy var loggerViewController:LoggerViewController = {
         var v = LoggerViewController(windowController: self)
         
         return v
     }()
     
+    static var defaultRect: NSRect {
+        return NSMakeRect(0, 0, 900, 600)
+    }
+    
     private var latestPackageName = ""
     
-    // MARK: target-action
-    @IBAction func onPreferenceClicked(_ sender: NSMenuItem) {
-        wc = SettingWindowController()
-        wc?.showWindow(nil)
-        wc?.windowDidLoad()
-    }
-
-    // MARK: Life Cycles
+    
     init() {
         let window = NSWindow()
         window.title = "Nassau"
@@ -73,21 +66,37 @@ class MainWindowController: NSWindowController {
     required init?(coder: NSCoder) {
         fatalError()
     }
+}
 
+//Mark: Target-Action
+extension MainWindowController {
+    @IBAction func onPreferenceClicked(_ sender: NSMenuItem) {
+        wc = SettingWindowController()
+        wc?.showWindow(nil)
+        wc?.windowDidLoad()
+    }
+}
+
+// MARK: Life Cycles
+extension MainWindowController {
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         checkADB()
         // contentViewController = loggerViewController
         showWindow(self)
         usbWatcher = USBWatcher(delegate: self)
-
+        
         window?.titleVisibility = .visible
         window?.styleMask = [.closable, .miniaturizable, .titled, .resizable]
         let x = (window?.screen?.frame.size.width)! / 2 - (MainWindowController.defaultRect.size.width) / 2
         let y = (window?.screen?.frame.size.height)! / 2 - (MainWindowController.defaultRect.size.height) / 2
         resizeWindowFrame(position: CGPoint(x: x, y: y))
     }
-    
+}
+
+// MARK: Private Methods
+extension MainWindowController {
     private func parseAndroidRequest(data: Dictionary<String, Any>) {
         if let action = data["action"] as? String {
             if action == "availableCommands" {
@@ -98,7 +107,6 @@ class MainWindowController: NSWindowController {
         }
     }
 
-    // MARK: private methods
     private func checkADB() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
             self.checkADB()
@@ -127,8 +135,6 @@ class MainWindowController: NSWindowController {
                 return
             }
             
-            requestDeviceCommandOptions()
-            
             latestPackageName = ""
             latestPid = ""
             
@@ -141,7 +147,7 @@ class MainWindowController: NSWindowController {
             
             loggerViewController.clear()
             streamLog(pid: "", adbKeyword: adbKeyword)
-
+            
             let currentWindowSize = self.window!.frame.size
             let currentOrigin = self.window!.frame.origin
             resizeWindowFrame(position: currentOrigin, size: currentWindowSize)
@@ -152,9 +158,7 @@ class MainWindowController: NSWindowController {
                 showWaiting()
             } else {
                 if latestPackageName != packageName || contentViewController != loggerViewController {
-                    
-                    requestDeviceCommandOptions()
-                    
+                                        
                     latestPackageName = packageName
                     
                     self.window?.title = "Nassau (\(packageName))"
@@ -213,7 +217,7 @@ class MainWindowController: NSWindowController {
             print("error while executing extrat package name: \(error)")
             return ""
         }
-
+        
         guard let str = result else {
             return ""
         }
@@ -223,11 +227,11 @@ class MainWindowController: NSWindowController {
         } else {
             waitingForADBViewController.hideChangeADBPath()
         }
-
+        
         // 国产的 Android 机上，有时会出现第一种情况
         let regexes = [".*0\\: TaskRecord.*A=([^ ^}]*)", ".*\\* TaskRecord.*A[= ]([^ ^}]*)"]
         var packageName = ""
-
+        
         for (idx, regex) in regexes.enumerated() {
             do {
                 let result = try NSRegularExpression(pattern: regex, options: NSRegularExpression.Options.caseInsensitive)
@@ -259,7 +263,7 @@ class MainWindowController: NSWindowController {
     
     private func getCurrentAppPid(packageName: String) -> String? {
         let adbPath = (NSApplication.shared.delegate as! AppDelegate).adbPath
-
+        
         var result: String?
         do {
             result = try Shell().outputOf(commandName: adbPath, arguments: ["shell", "ps", "|", "grep", packageName])
@@ -281,8 +285,8 @@ class MainWindowController: NSWindowController {
             if (segments.count > 0) {
                 // 有些机器上会有这些字符
                 let lastSegment = segments.last!
-                        .replacingOccurrences(of: "\r", with: "")
-                        .replacingOccurrences(of: "\n", with: "")
+                    .replacingOccurrences(of: "\r", with: "")
+                    .replacingOccurrences(of: "\n", with: "")
                 
                 if (packageName == lastSegment) {
                     var filteredSegments:[String] = segments.filter {$0 != ""}
@@ -363,7 +367,7 @@ class MainWindowController: NSWindowController {
     private func streamLog(pid: String, adbKeyword: String) {
         let adbPath = (NSApplication.shared.delegate as! AppDelegate).adbPath
         let adbKeyword = (NSApplication.shared.delegate as! AppDelegate).adbKeyword
-
+        
         func _parseLogLine(line: String) -> LogItem? {
             return self.parseLogLine(line: line, rule: { (_line, _pid) -> Bool in
                 if adbKeyword == "" {
@@ -379,7 +383,7 @@ class MainWindowController: NSWindowController {
             p.fileHandleForReading.closeFile()
             task.terminate()
         }
-
+        
         task = Process()
         
         task.launchPath = "/bin/sh"
@@ -409,7 +413,7 @@ class MainWindowController: NSWindowController {
                         }
                     } else if (index < lines.count - 1) {
                         let result = _parseLogLine(line: item)
-
+                        
                         if let result = result {
                             self.logObserver?.add(log: result)
                         }
@@ -437,20 +441,7 @@ extension MainWindowController {
     }
 }
 
-extension MainWindowController {
-    func requestDeviceCommandOptions() {
-        let adbPath = (NSApplication.shared.delegate as! AppDelegate).adbPath
-        DispatchQueue.global().async {
-            let _ = try! Shell().outputOf(commandName: adbPath, arguments: ["reverse", "tcp:23333", "tcp:8037"])
-            DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-                let _ = try! Shell().outputOf(commandName: adbPath, arguments: ["shell", "am", "broadcast", "-a", "nassau.REQUEST", "--es", "getAvailableCommands", "hello"])
-            })
-        }
-    }
-}
-
 extension MainWindowController: USBWatcherDelegate {
-    
     private func checkIfMaybeAnAndroid(deviceName: String) -> Bool {
         let keywords = [" USB", " Hub", "Apple", "iPhone"]
         for (_, keyword) in keywords.enumerated() {
@@ -462,7 +453,6 @@ extension MainWindowController: USBWatcherDelegate {
     }
     
     private func checkIfShouldStartADB() {
-        // 看看剩下的还有没有 Android 设备
         var maybeTheresAnAndroidDevice = false
         for (_, device) in usbDevices.enumerated() {
             if checkIfMaybeAnAndroid(deviceName: device) {
@@ -514,6 +504,5 @@ extension MainWindowController: NSWindowDelegate {
                 self.loggerViewController.onWindowResize()
             }
         })
-        
     }
 }
