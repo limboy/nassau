@@ -61,7 +61,6 @@
 		6AD743951FB16B1D00DE56C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AD743981FB16B1D00DE56C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6AD7439A1FB16B1D00DE56C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6AD7439B1FB16B1D00DE56C6 /* Nassau.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nassau.entitlements; sourceTree = "<group>"; };
 		BE46132A555FE32823B85F56 /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDataObserverProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,7 +120,6 @@
 				6AD743951FB16B1D00DE56C6 /* Assets.xcassets */,
 				6AD743971FB16B1D00DE56C6 /* MainMenu.xib */,
 				6AD7439A1FB16B1D00DE56C6 /* Info.plist */,
-				6AD7439B1FB16B1D00DE56C6 /* Nassau.entitlements */,
 				BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */,
 				BE46132A555FE32823B85F56 /* Shell.swift */,
 				6A73D8901FC12811007D0ED2 /* Nassau-Bridging-Header.h */,
