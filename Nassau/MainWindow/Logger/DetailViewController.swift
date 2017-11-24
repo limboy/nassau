@@ -12,20 +12,13 @@ protocol DetailViewControllerDelegate {
     func didClear()
 }
 
+// MARK: Properties
 class DetailViewController: NSViewController {
-    
     private let windowController: MainWindowController
     
     private var filterText = ""
     
     private var selectedLogLevel: LogLevel?
-    
-    private lazy var dateFormatter:DateFormatter = {
-        let d = DateFormatter()
-        d.dateFormat = "HH:mm:ss.SSS"
-        
-        return d
-    }()
 
     private struct Metrics {
         static let rowHeight:CGFloat = 24
@@ -43,7 +36,7 @@ class DetailViewController: NSViewController {
     
     private var tobeProcessedLogs = [LogItem]()
 
-    lazy var scrollView: NSScrollView = {
+    private lazy var scrollView: NSScrollView = {
         let v = NSScrollView()
         v.wantsLayer = true
         v.layer?.backgroundColor = NSColor.white.cgColor
@@ -57,7 +50,7 @@ class DetailViewController: NSViewController {
         return v
     }()
 
-    lazy var tableView: NSTableView = {
+    private lazy var tableView: NSTableView = {
         let v = NSTableView()
 
         v.allowsEmptySelection = true
@@ -74,7 +67,7 @@ class DetailViewController: NSViewController {
         return v
     }()
     
-    lazy var operationBar: NSView = {
+    private lazy var operationBar: NSView = {
         var o = NSView()
         o.translatesAutoresizingMaskIntoConstraints = false
         o.wantsLayer = true
@@ -82,7 +75,7 @@ class DetailViewController: NSViewController {
         return o
     }()
     
-    lazy var filterTextField: NSTextField = {
+    private lazy var filterTextField: NSTextField = {
         var f = NSTextField()
         f.translatesAutoresizingMaskIntoConstraints = false
         f.font = .systemFont(ofSize: 14)
@@ -95,7 +88,7 @@ class DetailViewController: NSViewController {
         return f
     }()
     
-    lazy var separator: NSView = {
+    private lazy var separator: NSView = {
         let border = NSView()
         border.wantsLayer = true
         border.layer?.backgroundColor = NSColor(calibratedRed: 223/255.0, green: 223/255.0, blue: 223/255.0, alpha: 1).cgColor
@@ -104,7 +97,7 @@ class DetailViewController: NSViewController {
         return border
     }()
     
-    lazy var etcItems: NSView = {
+    private lazy var etcItems: NSView = {
         let v = NSView()
         v.translatesAutoresizingMaskIntoConstraints = false
         
@@ -135,7 +128,7 @@ class DetailViewController: NSViewController {
         return v
     }()
     
-    lazy var filterLogLevelItems: NSView = {
+    private lazy var filterLogLevelItems: NSView = {
         let v = NSView()
         let allBtn = LogLevelView(frame: .zero)
         let errorsBtn = LogLevelView(frame: .zero)
@@ -189,71 +182,8 @@ class DetailViewController: NSViewController {
         return v
     }()
     
-    private func handleLogs() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            self.handleLogs()
-        }
-        
-        if self.tobeProcessedLogs.count <= 0 {
-            return
-        }
-        
-        let logs = self.tobeProcessedLogs
- 
-        let rowIndexSet = IndexSet(integersIn: (filteredMessages.count)...(filteredMessages.count - 1 + logs.count))
-
-        filteredMessages.append(contentsOf: logs)
-        tableView.insertRows(at: rowIndexSet)
-        tableView.reloadData(forRowIndexes: rowIndexSet, columnIndexes: IndexSet(integersIn: 0...2))
-        if shouldAutoScroll {
-            tableView.scrollRowToVisible(filteredMessages.count - 1)
-        }
-        
-        // 只要和 add 的在一个线程就可以了
-        self.tobeProcessedLogs.removeAll()
-    }
-
     var delegate: DetailViewControllerDelegate?
     
-    func generateVerticalSeparator() -> NSView {
-        let v = NSView()
-        v.wantsLayer = true
-        // v.layer?.backgroundColor = NSColor.red.cgColor
-        v.translatesAutoresizingMaskIntoConstraints = false
-        
-        let separator = NSView(frame: NSMakeRect(10, 0, 0.5, 26))
-        separator.wantsLayer = true
-        separator.layer?.backgroundColor = NSColor(calibratedRed: 190/255.0, green: 190/255.0, blue: 190/255.0, alpha: 1).cgColor
-        v.addSubview(separator)
-   
-        return v
-    }
-    
-    func addColumns() {
-        let columnConfigure: [Dictionary<String, Any>] = [
-            ["title": "Type", "identifier": "level", "width": 40.0, "minWidth": 40.0, "maxWidth": 50.0],
-            ["title": "Date", "identifier": "date", "width": 100.0, "minWidth": 80.0, "maxWidth": 120.0],
-            ["title": "Message", "identifier": "message", "width": 400.0, "minWidth": 200.0, "maxWidth": 2000.0],
-        ]
-        
-        columnConfigure.forEach { dictionary in
-            let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue:dictionary["identifier"] as! String))
-            column.headerCell.title = dictionary["title"] as! String
-            column.headerCell.stringValue = dictionary["title"] as! String
-            column.width = CGFloat(dictionary["width"] as! Double)
-            column.minWidth = CGFloat(dictionary["minWidth"] as! Double)
-            column.maxWidth = CGFloat(dictionary["maxWidth"] as! Double)
-            
-            tableView.addTableColumn(column)
-            
-            if (dictionary["identifier"] as! String == "message") {
-                messageColumn = column
-            }
-        }
-        
-        tableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
-    }
-
     init(windowController: MainWindowController) {
         self.windowController = windowController
         super.init(nibName: nil, bundle: nil)
@@ -262,13 +192,16 @@ class DetailViewController: NSViewController {
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+}
+
+// MARK: Life Cycle
+extension DetailViewController {
     override func loadView() {
         self.view = NSView(frame: NSRect(x: 0,
                                          y: 0,
                                          width: MainWindowController.defaultRect.width - 150,
                                          height: MainWindowController.defaultRect.height))
-
+        
         filterTextField.delegate = self
         operationBar.addSubview(filterTextField)
         operationBar.addSubview(filterLogLevelItems)
@@ -300,7 +233,7 @@ class DetailViewController: NSViewController {
         etcItems.trailingAnchor.constraint(equalTo: operationBar.trailingAnchor, constant: 10).isActive = true
         etcItems.topAnchor.constraint(equalTo: operationBar.topAnchor, constant: 3).isActive = true
         etcItems.bottomAnchor.constraint(equalTo: operationBar.bottomAnchor, constant: -3).isActive = true
-
+        
         operationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         operationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         operationBar.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -326,20 +259,85 @@ class DetailViewController: NSViewController {
         filterLogLevelItems.topAnchor.constraint(equalTo: filterTextField.topAnchor).isActive = true
         filterLogLevelItems.bottomAnchor.constraint(equalTo: filterTextField.bottomAnchor).isActive = true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         view.wantsLayer = true
         view.layer?.backgroundColor = NSColor.white.cgColor
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
         
         handleLogs()
     }
+}
+
+// MARK: Private Methods
+extension DetailViewController {
+    private func handleLogs() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            self.handleLogs()
+        }
+        
+        if self.tobeProcessedLogs.count <= 0 {
+            return
+        }
+        
+        let logs = self.tobeProcessedLogs
+        
+        let rowIndexSet = IndexSet(integersIn: (filteredMessages.count)...(filteredMessages.count - 1 + logs.count))
+        
+        filteredMessages.append(contentsOf: logs)
+        tableView.insertRows(at: rowIndexSet)
+        tableView.reloadData(forRowIndexes: rowIndexSet, columnIndexes: IndexSet(integersIn: 0...2))
+        if shouldAutoScroll {
+            tableView.scrollRowToVisible(filteredMessages.count - 1)
+        }
+        
+        self.tobeProcessedLogs.removeAll()
+    }
     
+    private func generateVerticalSeparator() -> NSView {
+        let v = NSView()
+        v.wantsLayer = true
+        // v.layer?.backgroundColor = NSColor.red.cgColor
+        v.translatesAutoresizingMaskIntoConstraints = false
+        
+        let separator = NSView(frame: NSMakeRect(10, 0, 0.5, 26))
+        separator.wantsLayer = true
+        separator.layer?.backgroundColor = NSColor(calibratedRed: 190/255.0, green: 190/255.0, blue: 190/255.0, alpha: 1).cgColor
+        v.addSubview(separator)
+        
+        return v
+    }
+    
+    private func addColumns() {
+        let columnConfigure: [Dictionary<String, Any>] = [
+            ["title": "Type", "identifier": "level", "width": 40.0, "minWidth": 40.0, "maxWidth": 50.0],
+            ["title": "Date", "identifier": "date", "width": 100.0, "minWidth": 80.0, "maxWidth": 120.0],
+            ["title": "Message", "identifier": "message", "width": 400.0, "minWidth": 200.0, "maxWidth": 2000.0],
+            ]
+        
+        columnConfigure.forEach { dictionary in
+            let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue:dictionary["identifier"] as! String))
+            column.headerCell.title = dictionary["title"] as! String
+            column.headerCell.stringValue = dictionary["title"] as! String
+            column.width = CGFloat(dictionary["width"] as! Double)
+            column.minWidth = CGFloat(dictionary["minWidth"] as! Double)
+            column.maxWidth = CGFloat(dictionary["maxWidth"] as! Double)
+            
+            tableView.addTableColumn(column)
+            
+            if (dictionary["identifier"] as! String == "message") {
+                messageColumn = column
+            }
+        }
+        
+        tableView.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
+    }
+
     private func reloadTableView() {
         filteredMessages.removeAll()
         allMessages.forEach { log in
@@ -358,9 +356,57 @@ class DetailViewController: NSViewController {
         
         tableView.reloadData()
     }
-    
 }
 
+// MARK: Public Methods
+extension DetailViewController {
+    func add(log: LogItem) {
+        allMessages.append(log)
+        
+        if let selectedLogLevel = selectedLogLevel {
+            if log.level != selectedLogLevel {
+                return
+            }
+        }
+        
+        if (filterText != "" && !log.message.localizedStandardContains(filterText)) {
+            return
+        }
+        
+        tobeProcessedLogs.append(log)
+    }
+    
+    func add(messages: Array<LogItem>) {
+        DispatchQueue.main.async {
+            self.tobeProcessedLogs.removeAll()
+            self.allMessages.removeAll()
+            self.filteredMessages.removeAll()
+            
+            messages.forEach { log in
+                self.add(log: log)
+            }
+            self.tableView.reloadData()
+            self.tableView.scrollRowToVisible(self.tobeProcessedLogs.count-1)
+        }
+    }
+    
+    func clear() {
+        tobeProcessedLogs.removeAll()
+        allMessages.removeAll()
+        filteredMessages.removeAll()
+        tableView.reloadData()
+        
+        if let delegate = self.delegate {
+            delegate.didClear()
+        }
+    }
+    
+    func reload() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: Target-Action
 extension DetailViewController {
     @objc func onScrollPauseBtnTapped(sender: NSButton) {
         shouldAutoScroll = !shouldAutoScroll
@@ -457,52 +503,5 @@ extension DetailViewController: NSTableViewDataSource, NSTableViewDelegate {
 extension DetailViewController: NSTextViewDelegate {
     func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
         print("clicked")
-    }
-}
-
-extension DetailViewController {
-    func add(log: LogItem) {
-        allMessages.append(log)
-        
-        if let selectedLogLevel = selectedLogLevel {
-            if log.level != selectedLogLevel {
-                return
-            }
-        }
-        
-        if (filterText != "" && !log.message.localizedStandardContains(filterText)) {
-            return
-        }
-        
-        tobeProcessedLogs.append(log)
-    }
-
-    func add(messages: Array<LogItem>) {
-        DispatchQueue.main.async {
-            self.tobeProcessedLogs.removeAll()
-            self.allMessages.removeAll()
-            self.filteredMessages.removeAll()
-            
-            messages.forEach { log in
-                self.add(log: log)
-            }
-            self.tableView.reloadData()
-            self.tableView.scrollRowToVisible(self.tobeProcessedLogs.count-1)
-        }
-    }
-    
-    func clear() {
-        tobeProcessedLogs.removeAll()
-        allMessages.removeAll()
-        filteredMessages.removeAll()
-        tableView.reloadData()
-        
-        if let delegate = self.delegate {
-            delegate.didClear()
-        }
-    }
-    
-    func reload() {
-        tableView.reloadData()
     }
 }
