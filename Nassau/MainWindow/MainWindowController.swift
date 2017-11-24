@@ -79,7 +79,6 @@ extension MainWindowController {
 
 // MARK: Life Cycles
 extension MainWindowController {
-    
     override func windowDidLoad() {
         super.windowDidLoad()
         checkADB()
@@ -97,16 +96,6 @@ extension MainWindowController {
 
 // MARK: Private Methods
 extension MainWindowController {
-    private func parseAndroidRequest(data: Dictionary<String, Any>) {
-        if let action = data["action"] as? String {
-            if action == "availableCommands" {
-                if let content = data["content"] as? [[String:String]] {
-                    loggerViewController.commands = content
-                }
-            }
-        }
-    }
-
     private func checkADB() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
             self.checkADB()
@@ -158,7 +147,7 @@ extension MainWindowController {
                 showWaiting()
             } else {
                 if latestPackageName != packageName || contentViewController != loggerViewController {
-                                        
+                    
                     latestPackageName = packageName
                     
                     self.window?.title = "Nassau (\(packageName))"
