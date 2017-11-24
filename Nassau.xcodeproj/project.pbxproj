@@ -76,6 +76,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A17E1FA1FC7C6A800CC418B /* SettingWindow */ = {
+			isa = PBXGroup;
+			children = (
+				6A8752841FBADB3F0011D056 /* SettingWindowController.swift */,
+				6A8752881FBAEC960011D056 /* SettingViewController.swift */,
+			);
+			path = SettingWindow;
+			sourceTree = "<group>";
+		};
+		6A17E1FB1FC7C6A800CC418B /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				6AA399731FB3E19A00CBC6C0 /* MainWindowController.swift */,
+				6A17E1FC1FC7C6DA00CC418B /* Logger */,
+				6A17E1FD1FC7C6DA00CC418B /* Waiting */,
+			);
+			path = MainWindow;
+			sourceTree = "<group>";
+		};
+		6A17E1FC1FC7C6DA00CC418B /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */,
+				6A4491E31FB32D2F006E6BD2 /* LoggerViewController.swift */,
+				6A4491E51FB32D46006E6BD2 /* TagViewController.swift */,
+				6A006AB61FB4310F003033CD /* TagTableViewCell.swift */,
+				6A4491E71FB32D54006E6BD2 /* DetailViewController.swift */,
+				6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */,
+				6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */,
+				6A73D8951FC3DE67007D0ED2 /* LogLevelView.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		6A17E1FD1FC7C6DA00CC418B /* Waiting */ = {
+			isa = PBXGroup;
+			children = (
+				6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */,
+			);
+			path = Waiting;
+			sourceTree = "<group>";
+		};
+		6A17E1FE1FC7C73A00CC418B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BE46132A555FE32823B85F56 /* Shell.swift */,
+				6A73D8931FC12862007D0ED2 /* USBWatcher.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		6A87528A1FBB16630011D056 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,26 +155,15 @@
 		6AD743921FB16B1D00DE56C6 /* Nassau */ = {
 			isa = PBXGroup;
 			children = (
-				6A8752841FBADB3F0011D056 /* SettingWindowController.swift */,
-				6A8752881FBAEC960011D056 /* SettingViewController.swift */,
+				6A17E1FE1FC7C73A00CC418B /* Utils */,
+				6A17E1FB1FC7C6A800CC418B /* MainWindow */,
+				6A17E1FA1FC7C6A800CC418B /* SettingWindow */,
 				6AD743931FB16B1D00DE56C6 /* AppDelegate.swift */,
-				6AA399731FB3E19A00CBC6C0 /* MainWindowController.swift */,
-				6A4491E31FB32D2F006E6BD2 /* LoggerViewController.swift */,
-				6A4491E51FB32D46006E6BD2 /* TagViewController.swift */,
-				6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */,
-				6A006AB61FB4310F003033CD /* TagTableViewCell.swift */,
-				6A4491E71FB32D54006E6BD2 /* DetailViewController.swift */,
-				6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */,
-				6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */,
-				6A73D8951FC3DE67007D0ED2 /* LogLevelView.swift */,
 				6A03C69B1FB97EE600D1D7DC /* BlackSails.iconset */,
 				6AD743951FB16B1D00DE56C6 /* Assets.xcassets */,
 				6AD743971FB16B1D00DE56C6 /* MainMenu.xib */,
 				6AD7439A1FB16B1D00DE56C6 /* Info.plist */,
-				BE461BF53846A52A7222DFF8 /* LogDataObserverProtocol.swift */,
-				BE46132A555FE32823B85F56 /* Shell.swift */,
 				6A73D8901FC12811007D0ED2 /* Nassau-Bridging-Header.h */,
-				6A73D8931FC12862007D0ED2 /* USBWatcher.swift */,
 			);
 			path = Nassau;
 			sourceTree = "<group>";
@@ -354,7 +394,6 @@
 				DEVELOPMENT_TEAM = 5P9ZHW7578;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Nassau/Info.plist;
@@ -377,7 +416,6 @@
 				DEVELOPMENT_TEAM = 5P9ZHW7578;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Nassau/Info.plist;
