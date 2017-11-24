@@ -20,7 +20,7 @@ final class Shell
         return executeShell(command: whichPathForCommand, arguments: arguments)
     }
 
-    func executeShell(command: String, arguments: [String] = []) -> String? {
+    private func executeShell(command: String, arguments: [String] = []) -> String? {
         let task = Process()
         task.launchPath = command
         task.arguments = arguments
