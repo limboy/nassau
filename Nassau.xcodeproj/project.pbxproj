@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6A006AB71FB4310F003033CD /* TagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A006AB61FB4310F003033CD /* TagTableViewCell.swift */; };
-		6A03C6841FB55C6800D1D7DC /* FilterLogLevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */; };
 		6A03C6861FB58DE500D1D7DC /* DetailTableViewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */; };
 		6A03C68A1FB70AE400D1D7DC /* WaitingForADBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */; };
 		6A03C69C1FB97EE600D1D7DC /* BlackSails.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 6A03C69B1FB97EE600D1D7DC /* BlackSails.iconset */; };
@@ -42,7 +41,6 @@
 
 /* Begin PBXFileReference section */
 		6A006AB61FB4310F003033CD /* TagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTableViewCell.swift; sourceTree = "<group>"; };
-		6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLogLevelButton.swift; sourceTree = "<group>"; };
 		6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewColumnCell.swift; sourceTree = "<group>"; };
 		6A03C6891FB70AE400D1D7DC /* WaitingForADBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForADBViewController.swift; sourceTree = "<group>"; };
 		6A03C69B1FB97EE600D1D7DC /* BlackSails.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = BlackSails.iconset; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				6A006AB61FB4310F003033CD /* TagTableViewCell.swift */,
 				6A4491E71FB32D54006E6BD2 /* DetailViewController.swift */,
 				6A03C6851FB58DE500D1D7DC /* DetailTableViewColumnCell.swift */,
-				6A03C6831FB55C6800D1D7DC /* FilterLogLevelButton.swift */,
 				6A73D8951FC3DE67007D0ED2 /* LogLevelView.swift */,
 			);
 			path = Logger;
@@ -250,7 +247,6 @@
 				6A4491E61FB32D46006E6BD2 /* TagViewController.swift in Sources */,
 				6A4491E41FB32D2F006E6BD2 /* LoggerViewController.swift in Sources */,
 				6AD743941FB16B1D00DE56C6 /* AppDelegate.swift in Sources */,
-				6A03C6841FB55C6800D1D7DC /* FilterLogLevelButton.swift in Sources */,
 				6A006AB71FB4310F003033CD /* TagTableViewCell.swift in Sources */,
 				6A8752891FBAEC960011D056 /* SettingViewController.swift in Sources */,
 				6A03C6861FB58DE500D1D7DC /* DetailTableViewColumnCell.swift in Sources */,
