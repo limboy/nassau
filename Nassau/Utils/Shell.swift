@@ -34,5 +34,4 @@ final class Shell
 
         return (output == "" || output == nil) ? nil : output
     }
-
 }

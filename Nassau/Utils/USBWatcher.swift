@@ -5,6 +5,7 @@
 //  Created by limboy on 19/11/2017.
 //  Copyright © 2017 limboy. All rights reserved.
 //
+// copy from: https://stackoverflow.com/questions/39003986/usb-connection-delegate-on-swift
 
 import Foundation
 import IOKit
