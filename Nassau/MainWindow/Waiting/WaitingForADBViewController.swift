@@ -8,8 +8,8 @@
 
 import Cocoa
 
+// MARK: Properties
 class WaitingForADBViewController: NSViewController {
-
     private var windowController: MainWindowController?
     
     private lazy var waitingImageView: NSImageView = {
@@ -40,6 +40,13 @@ class WaitingForADBViewController: NSViewController {
         self.windowController = windowController
     }
     
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+
+// MARK: Life Cycle
+extension WaitingForADBViewController {
     override func loadView() {
         var frame = MainWindowController.defaultRect
         if self.windowController?.window?.screen != nil {
@@ -54,19 +61,9 @@ class WaitingForADBViewController: NSViewController {
         changeADBTitle.topAnchor.constraint(equalTo: waitingImageView.bottomAnchor, constant: 15).isActive = true
         changeADBTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-        
-    }
-    
 }
 
+// MARK: Public Methods
 extension WaitingForADBViewController {
     func showChangeADBPath() {
         changeADBTitle.isHidden = false
